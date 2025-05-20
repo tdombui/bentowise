@@ -114,15 +114,6 @@ export default function JobEditForm({ job }: { job: Job }) {
 
   const handleCancel = () => setEditing(false);
 
-  const handleMarkAsCompleted = async () => {
-    const today = new Date().toISOString().split('T')[0];
-    const { error } = await supabase
-      .from('jobs')
-      .update({ status: 'Completed', completion_date: today })
-      .eq('id', job.id);
-
-    if (!error) router.refresh();
-  };
 
   return (
     <div className={`relative space-y-4 border p-4 rounded shadow bg-neutral-100 transition ${editing ? '' : 'opacity-95'}`}>

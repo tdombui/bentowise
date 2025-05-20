@@ -1,7 +1,27 @@
 'use client';
 import React, { forwardRef } from 'react';
-
-const PrintableInvoice = forwardRef<HTMLDivElement, { job: any }>(({ job }, ref) => (
+interface PrintableInvoiceJob {
+  id: string;
+  work_order_number?: string;
+  status: string;
+  created_at: string;
+  estimated_price: number;
+  service_description: string;
+  customers?: {
+    name?: string;
+    email?: string;
+    phone?: string;
+  };
+  vehicles?: {
+    year?: number;
+    make?: string;
+    model?: string;
+    color?: string;
+    license_plate?: string;
+    vin?: string;
+  };
+}
+const PrintableInvoice = forwardRef<HTMLDivElement, { job: PrintableInvoiceJob }>(({ job }, ref) => (
   <div ref={ref} className="p-10 text-black bg-white w-[8.5in] h-[11in] flex flex-col justify-between">
     <h1 className="text-4xl font-bold mb-2">Manik Motorsports</h1>
     <p className="text-sm mb-6">177 Main Street, Santa Ana, CA, 92704 | (949) 423-2510 | info@manikmotorsports.com</p>

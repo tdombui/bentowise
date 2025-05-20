@@ -1,6 +1,5 @@
 'use client';
 import { useRef } from 'react';
-import { useReactToPrint } from 'react-to-print';
 import PrintableInvoice from '@/app/components/invoices/PrintableInvoice';
 
 export default function InvoiceClientView({ job }: { job: any }) {

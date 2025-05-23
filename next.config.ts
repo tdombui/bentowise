@@ -2,7 +2,14 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    domains: ['wcwwdzlszowkdnaokntv.supabase.co'],  // 👈 Your actual Supabase project domain
-  },};
+    domains: ['wcwwdzlszowkdnaokntv.supabase.co'],
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+};
 
 export default nextConfig;

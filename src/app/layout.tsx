@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "BentoWise",
+  title: "Bentowise",
   description: "Lightweight Shop Management Platform with Operational Gravity",
 };
 

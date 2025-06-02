@@ -2,9 +2,11 @@ import { createClient } from '@supabase/supabase-js';
 
 // Server-only Supabase Client
 const supabaseAdmin = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!
+  process.env.SUPABASE_URL!,
+  process.env.SUPABASE_ANON_KEY!
 );
+console.log('SUPABASE_URL:', process.env.SUPABASE_URL);
+console.log('SUPABASE_ANON_KEY:', process.env.SUPABASE_ANON_KEY);
 
 export async function POST(request: Request) {
   try {
@@ -25,11 +27,11 @@ export async function POST(request: Request) {
     const fileBuffer = Buffer.from(await file.arrayBuffer());
 
     const uploadResponse = await fetch(
-      `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/job-photos/${filePath}`,
+      `${process.env.SUPABASE_URL}/storage/v1/object/job-photos/${filePath}`,
       {
         method: 'POST',
         headers: {
-          Authorization: `Bearer ${process.env.SUPABASE_SERVICE_ROLE_KEY}`,
+          Authorization: `Bearer ${process.env.SUPABASE_ANON_KEY}`,
           'Content-Type': file.type,
         },
         body: fileBuffer,
@@ -45,7 +47,7 @@ export async function POST(request: Request) {
     }
 
     // ✅ Construct public URL
-    const publicUrl = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/job-photos/${filePath}`;
+    const publicUrl = `${process.env.SUPABASE_URL}/storage/v1/object/public/job-photos/${filePath}`;
 
     // ✅ Insert into job_photos table
     const { data: photoRecord, error: dbError } = await supabaseAdmin

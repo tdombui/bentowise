@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Bentowise",
-  description: "Lightweight Shop Management Platform with operational gravity.",
+  description: "Lightweight Shop Management Platform with operational gravity. Manage your day-to-day operations with just your thumb.",
 };
 
 export default function RootLayout({
